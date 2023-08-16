@@ -1,4 +1,4 @@
- #Setup Database
+# Setup Database
 TimescaleDB is a time-series SQL database that is used as the data storage for the outputs of the OpenFMB Adapter. To setup the database, assuming that you want to store data on `~/local-path-to-store-data` folder of your computer, do:
 ```sh
 docker run -d \
@@ -11,7 +11,7 @@ docker run -d \
 
 The above Docker run command shall stand up an instance of TimescaleDB container name `timescaledb`, listening on port `5432`, and storing data to `~/local-path-to-store-data`.
 
-##Database Schema
+## Database Schema
 
 To initialize the database with the plug-in schema, download timescaledb. sql from this link: timescaledb.sql
 
@@ -27,7 +27,7 @@ Inside the containter, run the timescaledb.sql script:
 
 ```cd /var/lib/postgresql/ psql -U postgres -a -f timescaledb.sql```
 
-##Adapter Configuration
+## Adapter Configuration
 
 In the ```timescaledb``` section of the OpenFMB Adapter main configuration file, update according to your need:
 
