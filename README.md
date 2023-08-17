@@ -17,15 +17,21 @@ To initialize the database with the plug-in schema, download timescaledb. sql fr
 
 Navigate to where the file is downloaded and copy the file to the timescaledb container:
 
-```docker cp timescaledb.sql timescaledb:/var/lib/postgresql/```
+```sh
+docker cp timescaledb.sql timescaledb:/var/lib/postgresql/
+```
 
 Shell into the container and run the script:
 
-```docker exec -it -u postgres timescaledb ash```
+```sh
+docker exec -it -u postgres timescaledb ash
+```
 
 Inside the containter, run the timescaledb.sql script:
 
-```cd /var/lib/postgresql/ psql -U postgres -a -f timescaledb.sql```
+```sh
+cd /var/lib/postgresql/ psql -U postgres -a -f timescaledb.sql
+```
 
 ## Adapter Configuration
 
@@ -53,7 +59,7 @@ In the ```timescaledb``` section of the OpenFMB Adapter main configuration file,
 
 Here's an example of a configuration:
 
-```
+```sh
 timescaledb: 
     enabled: true 
     database-url: postgresql://postgres:password@localhost:5432/openfmb 
@@ -67,7 +73,7 @@ timescaledb:
     data-store-interval-seconds: 0
 ```    
 Next, specify the type of OpenFMB messages you wish to store by subscribing to either NATS or MQTT. Here is an example of full adapter.yaml configuration:
-```
+```sh
 file:
     id: openfmb-adapter-main 
     edition: 2.1 
