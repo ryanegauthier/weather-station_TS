@@ -15,11 +15,11 @@ The above Docker run command shall stand up an instance of TimescaleDB container
 
 To initialize the database with the plug-in schema, download timescaledb. sql from this link: timescaledb.sql
 
-    • Navigate to where the file is downloaded and copy the file to the timescaledb container:
+Navigate to where the file is downloaded and copy the file to the timescaledb container:
 
 ```docker cp timescaledb.sql timescaledb:/var/lib/postgresql/```
 
-    • Shell into the container and run the script:
+Shell into the container and run the script:
 
 ```docker exec -it -u postgres timescaledb ash```
 
