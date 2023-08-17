@@ -137,7 +137,7 @@ ENV_FILE=../config/docker/.env
 while getopts "e:p:bcdfhlrv" option; do
 
     # setup certs if dir missing
-    if [[ ! -d certs ]]; then
+    if [[ ! -d ./certs ]]; then
       cd ..
       mkdir certs
       pushd certs

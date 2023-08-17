@@ -11,6 +11,9 @@ networks:
     # TODO: the network name depends on the project folder (<project-name_>default)
     name: timescaledb_network
 
+volumes:
+  step:
+
 services:
 ##### BEGIN - NATS Service #####
   nats-server:
@@ -29,8 +32,8 @@ services:
       - type=svc
     volumes:
       # Input(s)
-      - nats:/nats/conf:ro
-      - certs:/nats/certs:ro
+      - ./nats:/nats/conf:ro
+      - ./certs:/nats/certs:ro
     command: [-c, nats/conf/nats-server.conf]
     logging: *default-logging
     networks:
