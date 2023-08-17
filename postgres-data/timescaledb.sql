@@ -4,7 +4,7 @@ CREATE TABLE data
     message_uuid uuid NOT NULL,
     "timestamp" timestamp with time zone NOT NULL,
     device_uuid uuid NOT NULL,
-    tagname character varying(1024) NOT NULL,
+    tagname TEXT NOT NULL,
     a_net_mag numeric,
     a_neut_mag numeric,
     a_phsa_mag numeric,
@@ -80,7 +80,7 @@ CREATE TABLE raw_data
     message_uuid uuid NOT NULL,
     "timestamp" timestamp with time zone NOT NULL,
     device_uuid uuid NOT NULL,
-    tagname character varying(1024) NOT NULL,
+    tagname TEXT NOT NULL,
     value jsonb NOT NULL
 )
 WITH (

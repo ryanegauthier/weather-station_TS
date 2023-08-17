@@ -6,22 +6,76 @@ x-logging: &default-logging
     max-file: "5"
   driver: json-file
 
+networks:
+  proxynet:
+    # TODO: the network name depends on the project folder (<project-name_>default)
+    name: timescaledb_network
+
 services:
-    timescaledb:
-        container_name: timescaledb
-        image: timescale/timescaledb:latest-pg12-oss
-        restart: always
-        environment: 
-          - POSTGRES_PASSWORD=p0stgr3s
-        logging:
-          options:
-            max-size: 10m
-            max-file: "3"
-        ports:
-          - '5432:5432'
-        volumes:
-          - ./postgres-data:/var/lib/postgresql
-          # copy the sql script to create tables
-          # - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-          # copy the sql script to fill tables
-          # - ./sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+##### BEGIN - NATS Service #####
+  nats-server:
+    profiles:
+      - all
+      - nats
+    image: nats:2.2.6
+    container_name: nats_main
+    ports:
+      - "4222:4222"
+      - "6222:6222"
+      - "8222:8222"
+      - "9222:9222"
+    labels:
+      - owner=oes
+      - type=svc
+    volumes:
+      # Input(s)
+      - nats:/nats/conf:ro
+      - certs:/nats/certs:ro
+    command: [-c, nats/conf/nats-server.conf]
+    logging: *default-logging
+    networks:
+      - proxynet
+##### END - NATS Service #####
+
+##### BEGIN - TimescaleDB Service #####
+  timescaledb:
+    profiles:
+      - all
+      - db
+    container_name: timescaledb
+    image: timescale/timescaledb:latest-pg12-oss
+    restart: always
+    environment: 
+      - POSTGRES_PASSWORD=p0stgr3s
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/
+      # copy the sql script to create tables
+      - ./postgres-data/create_users.sh:/docker-entrypoint-initdb.d/10_create_users.sh
+      # copy the sql script to create tables
+      - ./postgres-data/timescaledb.sql:/docker-entrypoint-initdb.d/20_create_tables.sql
+    logging: *default-logging
+    networks:
+      - proxynet
+##### END - TimescaleDB Service #####
+
+##### BEGIN - Adapter Service (add depends on timescale)#####
+  weather-station:
+    profiles:
+      - all
+      - ws
+    depends_on:
+      - nats-server
+    image: oesinc/openfmb.hmi:latest
+    container_name: weather-station
+    labels:
+      - owner=oes
+      - type=openfmb
+    volumes:
+      - ./device:/openfmb:ro
+    command: [-c, /device/weather-station.yaml]
+    logging: *default-logging
+    networks:
+      - proxynet
+##### END - Adapter Service #####
