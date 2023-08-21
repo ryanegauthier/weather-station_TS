@@ -79,7 +79,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: BatVolt_V
+                value: WS800_Solar
         AnIn:
           mag:
             double-field-type: mapped
@@ -112,7 +112,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: Solar
+                value: WS800_Precipitation
         AnIn:
           mag:
             double-field-type: mapped
@@ -145,7 +145,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: AirTemp_C
+                value: WS800_Wind_Speed
         AnIn:
           mag:
             double-field-type: mapped
@@ -178,7 +178,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: RH
+                value: WS800_Wind_Direction
         AnIn:
           mag:
             double-field-type: mapped
@@ -211,7 +211,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: Barometer_KPa
+                value: WS800_Temperature
         AnIn:
           mag:
             double-field-type: mapped
@@ -244,7 +244,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: WindSpeed_ms
+                value: WS800_Vapor_Pressure
         AnIn:
           mag:
             double-field-type: mapped
@@ -277,7 +277,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: WindDirect_deg
+                value: WS800_Barometric_Pressure
         AnIn:
           mag:
             double-field-type: mapped
@@ -310,7 +310,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: WindGust_ms
+                value: WS800_Relative_Humidity
         AnIn:
           mag:
             double-field-type: mapped
@@ -343,7 +343,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: RainYearly_mm
+                value: Atmos_Solar
         AnIn:
           mag:
             double-field-type: mapped
@@ -376,7 +376,7 @@ profiles:
             name:
               value:
                 string-field-type: constant
-                value: Snow_Acc_Yearly
+                value: Atmos_Precipitation
         AnIn:
           mag:
             double-field-type: mapped
@@ -384,6 +384,468 @@ profiles:
             register-mapping: float32
             lower_index: 18
             upper_index: 19
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Atmos_Wind_Speed
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 20
+            upper_index: 21
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Atmos_Wind_Direction
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 22
+            upper_index: 23
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Atmos_Temperature
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 24
+            upper_index: 25
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Atmos_Vapor_Pressure
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 26
+            upper_index: 27
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Atmos_Barometric_Pressure
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 28
+            upper_index: 29
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Atmos_Relative_Humidity
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 30
+            upper_index: 31
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Climavue_Solar
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 32
+            upper_index: 33
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Climavue_Precipitation
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 34
+            upper_index: 35
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Climavue_Wind_Speed
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 36
+            upper_index: 37
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Climavue_Wind_Direction
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 38
+            upper_index: 39
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Climavue_Temperature
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 40
+            upper_index: 41
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Climavue_Vapor_Pressure
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 42
+            upper_index: 43
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Climavue_Barometric_Pressure
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 44
+            upper_index: 45
+            scale: 1
+          q:
+            quality-field-type: ignored
+          t:
+            timestamp-field-type: ignored
+          units:
+            multiplier:
+              value:
+                enum-field-type: ignored
+            SIUnit:
+              enum-field-type: ignored
+        Phase:
+          value:
+            enum-field-type: ignored
+      - logicalNode:
+          identifiedObject:
+            description:
+              value:
+                string-field-type: ignored
+            mRID:
+              value:
+                string-field-type: ignored
+            name:
+              value:
+                string-field-type: constant
+                value: Climavue_Relative_Humidity
+        AnIn:
+          mag:
+            double-field-type: mapped
+            source-type: holding_register
+            register-mapping: float32
+            lower_index: 46
+            upper_index: 47
             scale: 1
           q:
             quality-field-type: ignored
